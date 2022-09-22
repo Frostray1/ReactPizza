@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
 
-function PizzaBlock({title, price}) {
-const [pizzaCount, setPizzaCount] = React.useState(0); 
-const onClickAdd = ()=> {
-  setPizzaCount(pizzaCount+1);
-}
+function PizzaBlock({title, price, image , sizes, types}) {
+  const typeNames = ['Тонкое','Традиционное'];
+
+// const [pizzaCount, setPizzaCount] = React.useState(0); / счетчик
+// const onClickAdd = ()=> {
+//   setPizzaCount(pizzaCount+1);
+// }
   return (
     <div className="pizza-block">
   <img
     className="pizza-block__image"
-    src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+    src={image}
     alt="Pizza"
   />
   <h4 className="pizza-block__title">{title}</h4>
   <div className="pizza-block__selector">
     <ul>
-      <li className="active">тонкое</li>
-      <li>традиционное</li>
+    {types.map(sizes => 
+        (<li>{types} см.</li>))}
     </ul>
     <ul>
-      <li className="active">26 см.</li>
-      <li>30 см.</li>
-      <li>40 см.</li>
+      {sizes.map(sizes => 
+        (<li>{sizes} см.</li>))}
     </ul>
   </div>
   <div className="pizza-block__bottom">
     <div className="pizza-block__price">от {price} ₽</div>
-    <button onClick={onClickAdd} className="button button--outline button--add">
+    <button onClick={/*onClickAdd*/ 0} className="button button--outline button--add">
       <svg
         width="12"
         height="12"
@@ -40,7 +41,7 @@ const onClickAdd = ()=> {
         />
       </svg>
       <span>Добавить</span>
-      <i>{pizzaCount}</i>
+      <i>{/*pizzaCount*/0}</i>
     </button>
   </div>
 </div>
